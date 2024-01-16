@@ -26,7 +26,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const user = await getCurrentUser();
+  const currentUser = await getCurrentUser();
   //const user = await prisma?.user.find();
   return (
     <html lang="en">
@@ -36,9 +36,11 @@ export default async function RootLayout({
           <RentModal />
           <LoginModal />
           <RegisterModal />
-          <Navbar currentUser={user} />
+          <Navbar currentUser={currentUser} />
         </ClientOnly>
-        {children}
+        <div className='pb-20 pt-28'>
+          {children}
+        </div>
       </body>
     </html>
   )
