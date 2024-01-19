@@ -1,7 +1,6 @@
 "use client"
 
 import useRegisterModal from "@/app/hooks/useRegisterModal";
-import axios from "axios";
 import { useCallback, useState } from "react";
 import { FieldValues, useForm, SubmitHandler } from "react-hook-form";
 import { AiFillGithub } from "react-icons/ai";
@@ -85,17 +84,9 @@ const LoginModal = () => {
             icon={AiFillGithub}
             onClick={() => signIn('github')}
           />
-          <div className="
-          text-neutral-500 text-center mt-4 font-light">
+          <div className="text-neutral-500 text-center mt-4 font-light">
             <p>First time using Airbnb?
-              <span 
-                onClick={onToggle} 
-                className="
-                  text-neutral-800
-                  cursor-pointer 
-                  hover:underline
-                "
-                > Create an account</span>
+              <span onClick={onToggle} className="text-neutral-800 cursor-pointer hover:underline"> Create an account</span>
             </p>
           </div>
       </div>

@@ -9,6 +9,7 @@ import useLoginModal from '@/app/hooks/useLoginModal'
 import { signOut } from 'next-auth/react'
 import { SafeUser } from '@/app/types'
 import useRentModal from '@/app/hooks/useRentModal'
+import { useRouter } from 'next/navigation'
 
 interface UserMenuProps {
     user?: SafeUser | null;
@@ -18,6 +19,7 @@ interface UserMenuProps {
 const UserMenu: React.FC<UserMenuProps> = ({
     user
 }) => {
+    const router = useRouter();
     const registerModal = useRegisterModal();
     const LoginModal = useLoginModal();
     const rentModal = useRentModal();
@@ -53,18 +55,18 @@ const UserMenu: React.FC<UserMenuProps> = ({
                     <div className='flex flex-col cursor-pointer'>
                         {user ? (
                             <>
-                                <MenuItem onClick={() => {}} label='My trips' />
-                                <MenuItem onClick={() => {}} label='My Favorites' />
-                                <MenuItem onClick={() => {}} label='My Reservations' />
-                                <MenuItem onClick={() => {}} label='My Properties' />
+                                <MenuItem onClick={() => {router.push('/trips'); toggeleOpen()}} label='My trips' />
+                                <MenuItem onClick={() => {router.push('/favorites'); toggeleOpen()}} label='My Favorites' />
+                                <MenuItem onClick={() => {router.push('/reservations'); toggeleOpen()}} label='My Reservations' />
+                                <MenuItem onClick={() => {router.push('/properties'); toggeleOpen()}} label='My Properties' />
                                 <MenuItem onClick={rentModal.onOpen} label='Airbnb my home' />
                                 <hr />
                                 <MenuItem onClick={() => signOut()} label='Logout' />
                             </>
                         ) : (
                             <>
-                                <MenuItem onClick={LoginModal.onOpen} label='Login' />
-                                <MenuItem onClick={registerModal.onOpen} label='Sign up' />
+                                <MenuItem onClick={() => {LoginModal.onOpen(); toggeleOpen()}} label='Login' />
+                                <MenuItem onClick={() => {registerModal.onOpen(); toggeleOpen()}} label='Sign up' />
                             </>
                         )}
                    
