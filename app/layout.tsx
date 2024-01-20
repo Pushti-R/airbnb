@@ -9,6 +9,8 @@ import LoginModal from './components/modals/LoginModal'
 import getCurrentUser from './actions/getCurrentUser'
 import RentModal from './components/modals/RentModal'
 import SearchModal from './components/modals/SearchModal'
+import { ThemeProvider } from './theme'
+import { ThemeSwitcher } from './components/toggle'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,20 +34,25 @@ export default async function RootLayout({
   const currentUser = await getCurrentUser();
   //const user = await prisma?.user.find();
   return (
+   
     <html lang="en">
-      <body className={font.className}>
-        <ClientOnly>
-          <ToasterProvider />
-          <SearchModal />
-          <RentModal />
-          <LoginModal />
-          <RegisterModal />
-          <Navbar currentUser={currentUser} />
-        </ClientOnly>
-        <div className='pb-20 pt-28'>
-          {children}
-        </div>
+      <body className={`${inter.className} ${font.className} bg-slate-50 dark:bg-[#0d1117]`}>
+          <ClientOnly>
+            <ToasterProvider />
+            <SearchModal />
+            <RentModal />
+            <LoginModal />
+            <RegisterModal />
+            <Navbar currentUser={currentUser} />
+          </ClientOnly>
+          <ThemeProvider attribute='class' defaultTheme="system" enableSystem>
+            <ThemeSwitcher />      
+              <div className='pb-20 pt-28'>
+                {children}
+              </div>
+        </ThemeProvider>
       </body>
     </html>
+    
   )
 }
