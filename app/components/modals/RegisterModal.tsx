@@ -77,9 +77,9 @@ const RegisterModal = () => {
             icon={AiFillGithub}
             onClick={() => signIn('github')}
           />
-          <div className="text-neutral-500 text-center mt-2 font-light">
+          <div className="text-neutral-500 dark:text-neutral-300 text-center mt-2 font-light">
             <p>Already have an account?
-              <span onClick={onToggle} className="text-neutral-800 cursor-pointer hover:underline"> Log in</span>
+              <span onClick={onToggle} className="text-neutral-800 dark:text-neutral-400 cursor-pointer hover:underline"> Log in</span>
             </p>
           </div>
         </div>

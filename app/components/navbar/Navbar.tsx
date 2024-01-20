@@ -22,8 +22,10 @@ const Navbar: React.FC<NavbarProps> = ({
                     <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
                         <Logo />
                         <Search />
-                        <UserMenu user={currentUser} />
+                        <div className="flex">
                         <ThemeSwitcher />
+                        <UserMenu user={currentUser} />
+                        </div>
                     </div>
                 </Container>
             </div>
