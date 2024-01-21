@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     icon: '/images/airbnb-icon.png'
   }
 }
+export const dynamic = 'force-dynamic';
 
 const font = Nunito({
   subsets: ['latin']
