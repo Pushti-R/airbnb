@@ -51,10 +51,15 @@ const UserMenu: React.FC<UserMenuProps> = ({
                 </div>
             </div>
             {isOpen && (
-                <div className='absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white dark:bg-[#0d1117] overflow-hidden right-0 top-12 text-sm'>
+                <div className='absolute rounded-xl shadow-md w-[40vw] md:w-4/5 bg-white dark:bg-[#0d1117] overflow-hidden right-0 top-12 text-sm'>
                     <div className='flex flex-col cursor-pointer'>
                         {user ? (
                             <>
+                                <div className='px-4 py-3 font-semibold cursor-auto'>
+                                    Hi <span className='font-extrabold text-md'>{user.name} !</span> <br />
+                                    <span className='text-xs text-gray-500 dark:text-gray-300'>{user.email}</span>
+                                </div>
+                                <hr />
                                 <MenuItem onClick={() => {router.push('/trips'); toggeleOpen()}} label='My trips' />
                                 <MenuItem onClick={() => {router.push('/favorites'); toggeleOpen()}} label='My Favorites' />
                                 <MenuItem onClick={() => {router.push('/reservations'); toggeleOpen()}} label='My Reservations' />
