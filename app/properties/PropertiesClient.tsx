@@ -10,6 +10,7 @@ import { SafeListing, SafeUser } from "@/app/types";
 import Heading from "@/app/components/Heading";
 import Container from "@/app/components/Container";
 import ListingCard from "@/app/components/listings/ListingCard";
+import useEditModal from "../hooks/useEditModal";
 
 interface PropertiesClientProps {
   listings: SafeListing[],
@@ -20,6 +21,7 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
   listings, currentUser
 }) => {
   const router = useRouter();
+  const editModal = useEditModal();
   const [deletingId, setDeletingId] = useState('');
 
   const onCancel = useCallback((id: string) => {
@@ -40,26 +42,30 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
 
   return (
     <Container>
-      <Heading
-        title="Properties"
-        subtitle="List of your Properties"
-      />
+      <Heading title="Properties" subtitle="List of your Properties" />
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
-
         {listings.map((listing) => (
-          <ListingCard
-            key={listing.id}
-            data={listing}
-            actionId={listing.id}
-            onAction={onCancel}
-            disabled={deletingId === listing.id}
-            actionLabel="Delete Property"
-            currentUser={currentUser}
-          />
+          <>
+          {/* {editModal.setListingId(listing.id)} */}
+            <ListingCard
+              key={listing.id}
+              data={listing}
+              actionId={listing.id}
+              onAction={onCancel}
+              onAction2={()=>{
+                editModal.onOpen()
+                editModal.setListing(listing)
+              }}
+              disabled={deletingId === listing.id}
+              actionLabel="Delete Property"
+              label2="Edit Property"
+              currentUser={currentUser}
+            />
+          </>
         ))}
       </div>
     </Container>
-   );
+  );
 }
  
 export default PropertiesClient;

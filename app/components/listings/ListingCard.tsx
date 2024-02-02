@@ -15,19 +15,33 @@ interface ListingCardProps {
   data: SafeListing;
   reservation?: SafeReservation;
   onAction?: (id: string) => void;
+  onAction2?: (id: string) => void;
+
   disabled?: boolean;
   actionLabel?: string;
+  label2?: string;
   actionId?: string;
   currentUser?: SafeUser | null
 };
 
 const ListingCard: React.FC<ListingCardProps> = ({
-  data, reservation, onAction, disabled, actionLabel, actionId = '', currentUser,
+  data, reservation, onAction, disabled, actionLabel,onAction2, label2,  actionId = '', currentUser,
 }) => {
   const router = useRouter();
   const { getByValue } = useCountries();
+  
 
   const location = getByValue(data.locationValue);
+  const onEdit = useCallback(
+    (e:React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      
+      if (disabled) {
+        return;
+      }
+
+   onAction2?.(actionId);
+}, [disabled, onAction2, actionId]);
 
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -83,7 +97,16 @@ const ListingCard: React.FC<ListingCardProps> = ({
           )}
         </div>
         {onAction && actionLabel && (
-          <Button disabled={disabled} small label={actionLabel} onClick={handleCancel} />
+          <div> 
+            {/* <Button disabled={disabled} small label={label2} onClick={onEdit}  /> */}
+            <Button disabled={disabled} small label={actionLabel} onClick={handleCancel} />
+          </div>
+        )}
+        {onAction2 && label2 && (
+          <div> 
+            <Button disabled={disabled} small label={label2} onClick={onEdit}  />
+            {/* <Button disabled={disabled} small label={actionLabel} onClick={handleCancel} /> */}
+          </div>
         )}
       </div>
     </div>
