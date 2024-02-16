@@ -14,7 +14,6 @@ import Button from "../Button";
 import { signIn } from "next-auth/react";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { mailOptions, transporter } from "@/app/api/email/nodemailer";
 
 
 
@@ -35,31 +34,9 @@ const RegisterModal = () => {
             password: ''
         }
     }); 
-    const email = () => {
-      return (
-        <h1>Hello</h1>
-      )
-    }
 
     const onSubmit: SubmitHandler<FieldValues> = async(data) => {
         setIsLoading(true);
-        // const response = await fetch('/api/send/', {
-        //   method: 'POST',
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   },
-        //   body: JSON.stringify(data)
-        // })
-        // if(response.status === 200){
-        //   toast.success("Email sent")
-        // }
-        // await fetch('/api/email', {
-        //   method: 'POST',
-        //   body: JSON.stringify({
-        //     firstName: data.firstName,
-        //     email: data.email
-        //   })
-        // })   
         axios.post('/api/register', data).then(async() => {
             toast.success("Success")
             registerModal.onClose();

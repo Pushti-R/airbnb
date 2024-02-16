@@ -1,33 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Welcome to Airbnb (house-rentals) Clone
 
-## Getting Started
+Visit the demo [https://house-rentals-five.vercel.app/](https://house-rentals-five.vercel.app/)
 
-First, run the development server:
+## What it includes
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Home Page**: Check out the properties available all around the world for vacations.
+2. **Categories**: Find the different types of place categories one wish to visit.
+3. **Welcome Email**: On signing up, one will recieve a welcome email on registered email id, and will be redirected to login form.
+4. **Signup with Providers**: One can also sign up using providers such as "Sign up with Google" and "Sign up with Github".
+5. **Listing Properties**: If one wish to add their property, just click on "Airbnb your home" on the home page and add all the details of their property and click on "Create".
+6. **My Properties**: One can check all their properties on "My Properties" page and can modify and delete them.
+7. **Filters**: If one wants to book a property, search the property from home page or can also apply filters(place, dates and no. of guests) to search, select the dates and click on "Reserve".
+8. **Booking a Property**: Once clicked on reserve, you can see your bookings on "My Trips" page and will also recieve the booking details through email.
+9. **My Reservations**: If the property is hosted by you, you can check the bookings on your properties from "My reservations" page.
+10. **Dark Mode**: Website is available in both light and dark mode and one toggle from the button available on the home page.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Technologies used
+1. [NextJS](https://nextjs.org/docs)
+2. [App Router](https://nextjs.org/docs/app)
+3. [Next Auth](https://next-auth.js.org/)
+4. [Tailwind CSS](https://tailwindcss.com/)
+5. [Prisma](https://www.prisma.io/docs)
+6. [MongoDB](https://www.mongodb.com/docs/)
+7. [Nodemailer](https://nodemailer.com/)
 
 ## Deploy on Vercel
 

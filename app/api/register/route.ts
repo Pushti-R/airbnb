@@ -1,11 +1,8 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import prisma from "@/app/libs/prismadb";
-import hbs from "nodemailer-express-handlebars";
 import { mailOptions, transporter } from "@/app/api/email/nodemailer";
-import fs from "fs";
-import handlebars from "handlebars";
-import path from "path"
+
 // import emailTempl 
 
 export async function POST(request: Request) {
@@ -14,9 +11,6 @@ export async function POST(request: Request) {
   const exists = await prisma.user.findFirst({
     where: { email },
   });
-  // const OAuthExists = await prisma.user.findFirst({
-  //     where:{email}
-  // })
   if (exists) {
     return NextResponse.json(
       { error: "User already exists" },
@@ -37,14 +31,6 @@ export async function POST(request: Request) {
   });
   //Welcome Email to User
   try {
-    // const source = fs
-    //   .readFileSync("D:\\VisualStudio\\NextJs\\Airbnb\\airbnb\\app\\api\\register\\sendEmail_template.html", "utf-8")
-    //   .toString();
-    // const template = handlebars.compile(source);
-    // const replacements = {
-    //   name: name,
-    // };
-    // const htmlToSend = template(replacements);
     await transporter.sendMail({
       ...mailOptions,
       to: email,

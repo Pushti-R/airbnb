@@ -1,7 +1,3 @@
-import hbs from 'nodemailer-express-handlebars';
-import path from 'path';
-
-
 import nodemailer from "nodemailer";
 const email = process.env.EMAIL;
 const pass = process.env.EMAIL_PASS;
