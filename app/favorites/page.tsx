@@ -5,6 +5,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import getFavoriteListings from "@/app/actions/getFavoriteListings";
 
 import FavoritesClient from "./FavoritesClient";
+import Footer from "../components/Footer";
 
 const ListingPage = async () => {
   const listings = await getFavoriteListings();
@@ -17,6 +18,7 @@ const ListingPage = async () => {
           title="No favorites found"
           subtitle="Looks like you have no favorite listings."
         />
+        <Footer />
       </ClientOnly>
     );
   }
@@ -24,6 +26,7 @@ const ListingPage = async () => {
   return (
     <ClientOnly>
       <FavoritesClient listings={listings} currentUser={currentUser} />
+      <Footer />
     </ClientOnly>
   );
 }

@@ -3,6 +3,7 @@ import getListings, { IListingsParams } from "./actions/getListings";
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
+import Footer from "./components/Footer";
 import ListingCard from "./components/listings/ListingCard";
 
 interface HomeProps {
@@ -19,6 +20,7 @@ const Home = async ({searchParams}: HomeProps) => {
     return (
       <ClientOnly>
         <EmptyState showReset />
+        <Footer />
       </ClientOnly>
     )
   }
@@ -34,6 +36,7 @@ const Home = async ({searchParams}: HomeProps) => {
           })}
         </div>
       </Container>
+      <Footer />
     </ClientOnly>
   )
 }

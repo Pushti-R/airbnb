@@ -2,7 +2,7 @@
 
 import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { TbPhotoPlus } from 'react-icons/tb'
 
 declare global {
@@ -17,11 +17,12 @@ interface ImageUploadProps {
 }
 
 const ImageUpload: React.FC<ImageUploadProps> = ({
-  onChange, value
+  onChange, value,
 }) => {
   const handleUpload = useCallback((result: any) => {
     onChange(result.info.secure_url);
   }, [onChange]);
+  const [hasError, setHasError] = useState(false);
 
   return (
     <CldUploadWidget onUpload={handleUpload} uploadPreset={uploadPreset} options={{
@@ -37,7 +38,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
             </div>
             {value && (
               <div className="absolute inset-0 w-full h-full">
-                <Image fill style={{ objectFit: 'cover' }} src={value} alt="House" />
+                <Image fill style={{ objectFit: 'cover' }} src={hasError ? "https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png" : value} alt="House" onError={() => !hasError && setHasError(true)}/>
               </div>
             )}
           </div>

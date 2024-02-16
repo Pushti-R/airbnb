@@ -20,10 +20,7 @@ const EditModal = () => {
   const editModal = useEditModal();
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(STEPS.INFO);
-  const [editId, setEditId] = useState("");
-  console.log(editModal.listing);
   const global = useRef<SafeListing | null>(null);
-
   global.current = editModal.listing;
 
   const {

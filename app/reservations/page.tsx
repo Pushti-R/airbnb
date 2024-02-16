@@ -5,6 +5,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import getReservations from "@/app/actions/getReservations";
 
 import TripsClient from "./ReservationsClient";
+import Footer from "../components/Footer";
 
 const ReservationsPage = async () => {
   const currentUser = await getCurrentUser();
@@ -16,6 +17,7 @@ const ReservationsPage = async () => {
           title="Unauthorized"
           subtitle="Please login"
         />
+        <Footer />
       </ClientOnly>
     )
   }
@@ -29,6 +31,7 @@ const ReservationsPage = async () => {
           title="No reservations found"
           subtitle="Looks like you have no reservations on your properties."
         />
+        <Footer />
       </ClientOnly>
     );
   }
@@ -39,6 +42,7 @@ const ReservationsPage = async () => {
         reservations={reservations}
         currentUser={currentUser}
       />
+      <Footer />
     </ClientOnly>
   );
 }

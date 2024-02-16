@@ -6,6 +6,7 @@ import ClientOnly from "@/app/components/ClientOnly";
 import EmptyState from "@/app/components/EmptyState";
 
 import ListingClient from "./ListingClient";
+import Footer from "@/app/components/Footer";
 
 interface IParams {
   listingId?: string;
@@ -21,6 +22,7 @@ const ListingPage = async ({ params }: { params: IParams }) => {
     return (
       <ClientOnly>
         <EmptyState />
+        <Footer />
       </ClientOnly>
     );
   }
@@ -28,6 +30,7 @@ const ListingPage = async ({ params }: { params: IParams }) => {
   return (
     <ClientOnly>
       <ListingClient listing={listing} reservations={reservations} currentUser={currentUser} />
+      <Footer />
     </ClientOnly>
   );
 }

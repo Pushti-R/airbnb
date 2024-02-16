@@ -14,6 +14,8 @@ import Button from "../Button";
 import { signIn } from "next-auth/react";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { mailOptions, transporter } from "@/app/api/email/nodemailer";
+
 
 
 const RegisterModal = () => {
@@ -33,6 +35,11 @@ const RegisterModal = () => {
             password: ''
         }
     }); 
+    const email = () => {
+      return (
+        <h1>Hello</h1>
+      )
+    }
 
     const onSubmit: SubmitHandler<FieldValues> = async(data) => {
         setIsLoading(true);
@@ -46,27 +53,27 @@ const RegisterModal = () => {
         // if(response.status === 200){
         //   toast.success("Email sent")
         // }
-        await fetch('/api/email', {
-          method: 'POST',
-          body: JSON.stringify({
-            firstName: data.firstName,
-            email: data.email
-          })
-        })
-    
-          
-        axios.post('/api/register', data).then(() => {
+        // await fetch('/api/email', {
+        //   method: 'POST',
+        //   body: JSON.stringify({
+        //     firstName: data.firstName,
+        //     email: data.email
+        //   })
+        // })   
+        axios.post('/api/register', data).then(async() => {
             toast.success("Success")
             registerModal.onClose();
+            reset();
             loginModal.onOpen();
         })
         .catch((error) => {
-            toast.error("Something went wrong");
+            toast.error(error.response.data.error);
             console.log(error);
         })
         .finally(() => {
             setIsLoading(false);
         })
+        
     }
 
     const onToggle = useCallback(() => {

@@ -11,6 +11,7 @@ import RentModal from './components/modals/RentModal'
 import SearchModal from './components/modals/SearchModal'
 import { ThemeProvider } from './theme'
 import EditModal from './components/modals/EditModal'
+import Footer from './components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -37,6 +38,7 @@ export default async function RootLayout({
   return (
    
     <html lang="en">
+      <meta name="color-scheme" content="dark light"></meta>
       <body className={`${inter.className} ${font.className} bg-slate-50 dark:bg-[#0d1117]`}>
         <ThemeProvider attribute='class' defaultTheme="system" enableSystem>
             <ClientOnly>
@@ -48,7 +50,7 @@ export default async function RootLayout({
               <EditModal />
               <Navbar currentUser={currentUser} />
             </ClientOnly>
-              <div className='pb-20 pt-28'>
+              <div className='pt-28'>
                 {children}
               </div>
         </ThemeProvider>
